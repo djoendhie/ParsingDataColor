@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Students {
+class Population {
     var rank: String = ""
     var country:String = ""
     var population:String = ""

@@ -19,9 +19,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        lblRank.text = passRank!
-        lblCountry.text = passCountry!
-        lblPopulation.text = passPopulation!
+        Rank.text = passRank!
+        Country.text = passCountry!
+        population.text = passPopulation!
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

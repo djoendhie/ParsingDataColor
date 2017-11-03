@@ -10,8 +10,9 @@ import UIKit
 
 class TaskTableViewController: UITableViewController {
 
-    let populationURL = "http://www.androidbegin.com/tutorial/jsonparsetutorial.txt"
+    var populationURL = "http://www.androidbegin.com/tutorial/jsonparsetutorial.txt"
     var population = [Population]()
+    
     var rankSelected:String?
     var countrySelected:String?
     var populationSelected:String?
@@ -19,7 +20,7 @@ class TaskTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getPopulationData()
+        getPopulation()
         
         //set row height to 92
         tableView.estimatedRowHeight = 92.0
@@ -50,9 +51,9 @@ class TaskTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TaskTableViewCell
 
-        cell.lblRank.text = population[indexPath.row].rank
+        cell.lblRank.text = "No\(population[indexPath.row].rank)"
         cell.lblCountry.text = population[indexPath.row].country
-        cell.labelpopulation.text = population[indexPath.row].population
+        cell.lblPopulation.text = population[indexPath.row].population
         // Configure the cell...
 
         return cell
@@ -80,7 +81,7 @@ class TaskTableViewController: UITableViewController {
             
         }
     }
-    func getStudentsData() {
+    func getPopulation() {
         guard let populationURL = URL(string: populationURL) else {
             return //this return is for back up the value that got when call variable loanURL
         }
@@ -120,13 +121,13 @@ class TaskTableViewController: UITableViewController {
             //will call data be repeated for jsonLoan have data json array from variable jsonLoans
             for jsonLoan in jsonLoans {
                 //declare loan as object from class loan
-                let population = Population()
-                population.rank = jsonLoan["rank"] as! String
-                population.country = jsonLoan["country"] as! String
-                population.population = jsonLoan["population"] as! String
+                let populations = Population()
+                populations.rank = jsonLoan["rank"] as! String
+                populations.country = jsonLoan["country"] as! String
+                populations.population = jsonLoan["population"] as! String
 
                 
-                population.append(population)
+                population.append(populations)
             }
         }catch{
             print(error)
